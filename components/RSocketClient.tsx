@@ -1,19 +1,14 @@
-import {IdentitySerializer, JsonSerializer, Payload, RSocketClient} from 'rsocket-core';
-import RSocketWebSocketClient from 'rsocket-websocket-client';
+import {Payload, RSocketConnector} from "rsocket-core";
+import {WebsocketClientTransport} from "rsocket-websocket-client";
 
-const client = new RSocketClient({
-    serializers: {
-        data: JsonSerializer,
-        metadata: IdentitySerializer
-    },
+const client = new RSocketConnector({
     setup: {
         keepAlive: 1000000,
         lifetime: 100000,
         dataMimeType: 'application/json',
         metadataMimeType: 'message/x.rsocket.routing.v0',
     },
-    // @ts-ignore
-    transport: new RSocketWebSocketClient({
+    transport: new WebsocketClientTransport({
         url: 'ws://localhost:6565/rsocket'
     }),
 })

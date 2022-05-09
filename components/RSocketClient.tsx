@@ -1,20 +1,21 @@
-import {Payload, RSocketConnector} from "rsocket-core";
+import {ConnectorConfig, Payload, RSocketConnector} from "rsocket-core";
 import {WebsocketClientTransport} from "rsocket-websocket-client";
 
-const client = new RSocketConnector({
-    setup: {
-        keepAlive: 1000000,
-        lifetime: 100000,
-        dataMimeType: 'application/json',
-        metadataMimeType: 'message/x.rsocket.routing.v0',
-    },
-    transport: new WebsocketClientTransport({
-        url: 'ws://localhost:6565/rsocket'
-    }),
-})
+function client(options: ConnectorConfig): RSocketConnector {
+    return new RSocketConnector({
+        setup: {
+            keepAlive: 1000000,
+            lifetime: 100000,
+            dataMimeType: 'application/cbor',
+            metadataMimeType: 'message/x.rsocket.routing.v0',
+        },
+        transport: new WebsocketClientTransport({
+            url: 'ws://localhost:6565/rsocket'
+        }),
+    })
 
-async function makeRequest(data: JSON) {
-    return new Promise(async (resolve, reject) => {
+    async function makeRequest(client: RSocketConnector, data: JSON) {
+        return new Promise(async (resolve, reject) => {
             const connection = await client.connect()
             connection.requestResponse(
                 {

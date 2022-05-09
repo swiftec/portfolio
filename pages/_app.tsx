@@ -1,7 +1,7 @@
 import {ChakraProvider} from '@chakra-ui/react'
+import type {AppProps} from 'next/app'
 
-// @ts-ignore
-function MyApp({Component, pageProps}) {
+function App({Component, pageProps}: AppProps) {
     return (
         <ChakraProvider>
             <Component {...pageProps} />
@@ -9,4 +9,4 @@ function MyApp({Component, pageProps}) {
     )
 }
 
-export default MyApp
+export default App

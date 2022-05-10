@@ -1,10 +1,11 @@
 import React from "react";
-import logo from "./logo.svg";
 import { PageContextProvider } from "./usePageContext";
 import type { PageContext } from "./types";
-import { theme } from "./theme/global";
+import { theme } from "../styles/theme";
 import { Link } from "./Link";
 import { ChakraProvider } from "@chakra-ui/react";
+import { global } from "../styles/global";
+import { Global } from "@emotion/react";
 
 export { PageShell };
 
@@ -17,11 +18,11 @@ function PageShell({
 }) {
   return (
     <React.StrictMode>
-      <ChakraProvider theme={theme}>
+      <Global styles={global} />
+      <ChakraProvider resetCSS theme={theme}>
         <PageContextProvider pageContext={pageContext}>
           <Layout>
             <Sidebar>
-              <Logo />
               <Link className="navitem" href="/">
                 Home
               </Link>
@@ -79,21 +80,6 @@ function Content({ children }: { children: React.ReactNode }) {
       }}
     >
       {children}
-    </div>
-  );
-}
-
-function Logo() {
-  return (
-    <div
-      style={{
-        marginTop: 20,
-        marginBottom: 10,
-      }}
-    >
-      <a href="/">
-        <img src={logo} height={64} width={64} alt="logo" />
-      </a>
     </div>
   );
 }

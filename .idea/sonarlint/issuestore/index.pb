@@ -11,9 +11,6 @@ H
 renderer/_error.page.tsx,2/0/20ba78ed9737f39e935b7f302c942efdf06030b2
 A
 renderer/logo.svg,9/b/9b65e0754c684f76dfef502f1c22f76e4388e97e
-:
-
-.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
 K
 renderer/usePageContext.tsx,d/a/dae8cee3e95aae9b559d7124b5eede55e74c9486
 L

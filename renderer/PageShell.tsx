@@ -4,7 +4,7 @@ import type { PageContext } from "./types";
 import { theme } from "../styles/theme";
 import { Link } from "./Link";
 import { ChakraProvider } from "@chakra-ui/react";
-import { global } from "../styles/global";
+import { globalTheme } from "../styles/global.theme";
 import { Global } from "@emotion/react";
 
 export { PageShell };
@@ -18,7 +18,7 @@ function PageShell({
 }) {
   return (
     <React.StrictMode>
-      <Global styles={global} />
+      <Global styles={globalTheme} />
       <ChakraProvider resetCSS theme={theme}>
         <PageContextProvider pageContext={pageContext}>
           <Layout>

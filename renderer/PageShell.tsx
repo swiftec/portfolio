@@ -1,20 +1,22 @@
 import React from "react";
-import { PageContextProvider } from "./usePageContext";
-import type { PageContext } from "./types";
-import { theme } from "../styles/theme";
-import { Link } from "./Link";
-import { ChakraProvider } from "@chakra-ui/react";
-import { globalTheme } from "../styles/global.theme";
-import { Global } from "@emotion/react";
+import {PageContextProvider} from "./usePageContext";
+import type {PageContext} from "./types";
+import {theme} from "../styles/theme";
+import {Link} from "./Link";
+import {ChakraProvider} from "@chakra-ui/react";
+import {globalTheme} from "../styles/global.theme";
+import {Global} from "@emotion/react";
+import Layout from "../components/Layout"
+import Sidebar from "../components/Sidebar";
 
-export { PageShell };
+export {PageShell};
 
 function PageShell({
-  children,
-  pageContext,
-}: {
-  children: React.ReactNode;
-  pageContext: PageContext;
+                       children,
+                       pageContext,
+                   }: {
+    children: React.ReactNode;
+    pageContext: PageContext;
 }) {
   return (
     <React.StrictMode>
@@ -35,37 +37,6 @@ function PageShell({
         </PageContextProvider>
       </ChakraProvider>
     </React.StrictMode>
-  );
-}
-
-function Layout({ children }: { children: React.ReactNode }) {
-  return (
-    <div
-      style={{
-        display: "flex",
-        maxWidth: 900,
-        margin: "auto",
-      }}
-    >
-      {children}
-    </div>
-  );
-}
-
-function Sidebar({ children }: { children: React.ReactNode }) {
-  return (
-    <div
-      style={{
-        padding: 20,
-        flexShrink: 0,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        lineHeight: "1.8em",
-      }}
-    >
-      {children}
-    </div>
   );
 }
 

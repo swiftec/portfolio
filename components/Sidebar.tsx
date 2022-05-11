@@ -3,20 +3,12 @@ import {Box, Drawer, DrawerContent, useColorModeValue, useDisclosure, useStyleCo
 import SidebarContent from "./SidebarContent";
 import MobileNav from "./MobileNav";
 
-// pageshell -> layout -> sidebar -> sidebarContent -> navItem -> link
-
-
-export default function Sidebar({children}: { children: ReactNode }) {
+function Sidebar({children}: { children?: ReactNode }) {
     const styles = useStyleConfig('Sidebar')
     const {isOpen, onOpen, onClose} = useDisclosure();
     return (
         <Box __css={styles} minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
-            <SidebarContent
-                onClose={() => onClose}
-                display={{base: 'none', md: 'block'}}
-            >
-                {children}
-            </SidebarContent>
+            <SidebarContent onClose={() => onClose} display={{base: 'none', md: 'block'}}/>
             <Drawer
                 autoFocus={false}
                 isOpen={isOpen}
@@ -26,9 +18,7 @@ export default function Sidebar({children}: { children: ReactNode }) {
                 onOverlayClick={onClose}
                 size="full">
                 <DrawerContent>
-                    <SidebarContent onClose={onClose}>
-                        {children}
-                    </SidebarContent>
+                    <SidebarContent onClose={onClose}/>
                 </DrawerContent>
             </Drawer>
             <MobileNav display={{base: 'flex', md: 'none'}} onOpen={onOpen}/>
@@ -38,3 +28,5 @@ export default function Sidebar({children}: { children: ReactNode }) {
         </Box>
     );
 }
+
+export default Sidebar

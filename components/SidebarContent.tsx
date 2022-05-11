@@ -1,12 +1,13 @@
+import React from "react";
 import {Box, BoxProps, CloseButton, Flex, Text, useColorModeValue} from "@chakra-ui/react";
-import React, {ReactNode} from "react";
+import NavItem from "./NavItem";
+import {FiHome, FiUser} from "react-icons/fi";
 
 interface SidebarProps extends BoxProps {
     onClose: () => void;
-    children: ReactNode
 }
 
-const SidebarContent = ({onClose, children, ...rest}: SidebarProps) => {
+const SidebarContent = ({onClose, ...rest}: SidebarProps) => {
     return (
         <Box
             bg={useColorModeValue('white', 'gray.900')}
@@ -16,13 +17,18 @@ const SidebarContent = ({onClose, children, ...rest}: SidebarProps) => {
             pos="fixed"
             h="full"
             {...rest}>
-            <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
+            <Flex
+                h="20"
+                alignItems="center"
+                mx="8"
+                justifyContent="space-between">
                 <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
                     Logo
                 </Text>
                 <CloseButton display={{base: 'flex', md: 'none'}} onClick={onClose}/>
             </Flex>
-            {children}
+            <NavItem href="/" name="Home" icon={FiHome}/>
+            <NavItem href="/about" name="About" icon={FiUser}/>
         </Box>
     );
 };

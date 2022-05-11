@@ -1,7 +1,8 @@
 import React from "react";
-import {Box, BoxProps, CloseButton, Flex, Text, useColorModeValue} from "@chakra-ui/react";
+import {Box, BoxProps, CloseButton, Flex, Image, Link, useColorModeValue} from "@chakra-ui/react";
 import NavItem from "./NavItem";
 import {FiHome, FiUser} from "react-icons/fi";
+import Logo from "../assets/images/km-diam-logo.png"
 
 interface SidebarProps extends BoxProps {
     onClose: () => void;
@@ -22,9 +23,9 @@ const SidebarContent = ({onClose, ...rest}: SidebarProps) => {
                 alignItems="center"
                 mx="8"
                 justifyContent="space-between">
-                <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-                    Logo
-                </Text>
+                <Link href="/" className="logo">
+                    <Image src={Logo} alt="KM"/>
+                </Link>
                 <CloseButton display={{base: 'flex', md: 'none'}} onClick={onClose}/>
             </Flex>
             <NavItem href="/" name="Home" icon={FiHome}/>

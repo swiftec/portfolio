@@ -1,5 +1,5 @@
-import { ConnectorConfig, Payload, RSocketConnector } from "rsocket-core";
-import { WebsocketClientTransport } from "rsocket-websocket-client";
+import {ConnectorConfig, Payload, RSocketConnector} from "rsocket-core";
+import {WebsocketClientTransport} from "rsocket-websocket-client";
 
 const defaultSetup = {
   keepAlive: 1000000,

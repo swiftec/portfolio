@@ -10,24 +10,26 @@ import Sidebar from "../components/Sidebar";
 import Content from "../components/Content";
 
 interface PageShellProps {
-    children: React.ReactNode;
-    pageContext: PageContext;
+  children: React.ReactNode;
+  pageContext: PageContext;
 }
 
 function PageShell({children, pageContext}: PageShellProps) {
-    return (
-        <React.StrictMode>
-            <Global styles={globalTheme}/>
-            <ChakraProvider resetCSS theme={theme}>
-                <PageContextProvider pageContext={pageContext}>
-                    <Layout>
-                        <Sidebar/>
-                        <Content>{children}</Content>
-                    </Layout>
-                </PageContextProvider>
-            </ChakraProvider>
-        </React.StrictMode>
-    );
+  return (
+    <React.StrictMode>
+      <Global styles={globalTheme}/>
+      <ChakraProvider
+        resetCSS
+        theme={theme}>
+        <PageContextProvider pageContext={pageContext}>
+          <Layout>
+            <Sidebar/>
+            <Content>{children}</Content>
+          </Layout>
+        </PageContextProvider>
+      </ChakraProvider>
+    </React.StrictMode>
+  );
 }
 
 export default PageShell

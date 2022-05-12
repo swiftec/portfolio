@@ -13,7 +13,7 @@ async function hydrate() {
   const pageContext = await getPage<PageContextBuiltInClient & PageContext>();
   const {Page, pageProps} = pageContext;
   ReactDOM.hydrate(
-      <PageShell pageContext={pageContext}>
+    <PageShell pageContext={pageContext}>
       <Page {...pageProps} />
     </PageShell>,
     document.getElementById("page-view")

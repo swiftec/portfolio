@@ -1,9 +1,9 @@
 export const Sidebar = {
-    baseStyle: {
-        display: 'flex',
-        flexDirection: 'column',
-        background: 'white',
-        alignItems: 'center',
-        gap: 6,
-    }
+  baseStyle: {
+    display: 'flex',
+    flexDirection: 'column',
+    background: 'white',
+    alignItems: 'center',
+    gap: 6,
+  }
 }
